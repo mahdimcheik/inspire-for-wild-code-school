@@ -1,0 +1,22 @@
+@import "../../../../variables.scss";
+.pink {
+  background-color: $primary-color;
+  color: white;
+}
+
+.black {
+  background-color: black;
+  color: azure;
+}
+.btn-general {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 11px 20px;
+  border-radius: 6px;
+  border: none;
+  transition: transform 0.4s ease;
+}
+.btn-general:hover {
+  transform: scale(0.95);
+}

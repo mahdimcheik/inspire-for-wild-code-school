@@ -1,0 +1,168 @@
+<form
+  class="formulaire"
+  [formGroup]="registerForm"
+  (ngSubmit)="registerForm.valid && onSubmit()"
+  #formRegister="ngForm"
+>
+  <div class="infos">
+    <div class="container-input">
+      <label class="label-form" for="lastName">Nom *</label>
+      <input
+        class="input-form"
+        type="text"
+        id="lastName"
+        name="lastName"
+        formControlName="lastName"
+        placeholder="Votre nom"
+        autocomplete="on"
+      />
+      <div
+        class="error"
+        *ngIf="
+          formRegister.submitted && registerForm.controls['lastName'].errors
+        "
+      >
+        <div [hidden]="!registerForm.controls['lastName'].errors['required']">
+          Le nom est requis
+        </div>
+      </div>
+    </div>
+    <div class="container-input">
+      <label class="label-form" for="firstName">Prénom *</label>
+      <input
+        class="input-form"
+        type="text"
+        id="firstName"
+        name="firstName"
+        formControlName="firstName"
+        placeholder="Votre prénom"
+        autocomplete="on"
+      />
+      <div
+        class="error"
+        *ngIf="
+          formRegister.submitted && registerForm.controls['firstName'].errors
+        "
+      >
+        <div [hidden]="!registerForm.controls['firstName'].errors['required']">
+          Le prénom est requis
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-input">
+    <label class="label-form" for="email"
+      >Email *
+      <span
+        >Utilisez votre adresse
+        {{ registerForm.get('email')?.errors?.['extension']?.expected }}
+      </span></label
+    >
+    <input
+      class="input-form"
+      type="text"
+      id="email"
+      name="email"
+      formControlName="email"
+      placeholder="Votre email"
+      autocomplete="on"
+    />
+    <div
+      class="error"
+      *ngIf="
+    formRegister.submitted && registerForm.get('email')?.errors?.['required']
+     "
+    >
+      L'email est requis
+    </div>
+    <div
+      class="error"
+      *ngIf="formRegister.submitted && registerForm.get('email')?.errors?.['email']"
+    >
+      L'email est invalide
+    </div>
+
+    <div
+      class="error"
+      *ngIf="registerForm.get('email')?.errors?.['extension'] && formRegister.submitted"
+    >
+      L'email doit appartenir au domaine
+      {{ registerForm.get('email')?.errors?.['extension']?.expected }}
+    </div>
+  </div>
+
+  <div class="container-input">
+    <label class="label-form" for="password">Mot de passe *</label>
+    <input
+      class="input-form"
+      type="password"
+      id="password"
+      name="password"
+      formControlName="password"
+      placeholder="Votre mot de passe"
+    />
+    <div
+      class="error"
+      *ngIf="formRegister.submitted && registerForm.get('password')?.errors?.['required']"
+    >
+      Mot de passe requis
+    </div>
+    <div
+      class="mdp-error"
+      *ngIf="registerForm.get('password')?.errors?.['strongPassword']"
+    >
+      Le mot de passe doit contenir au moins une lettre majuscule et avoir une
+      longueur minimale de 8 caractères.
+    </div>
+  </div>
+  <div class="container-input">
+    <label class="label-form" for="checkPassword"
+      >Confirmation du mot de passe *</label
+    >
+    <input
+      class="input-form"
+      type="password"
+      id="checkPassword"
+      name="checkPassword"
+      formControlName="checkPassword"
+      placeholder="Confirmation de votre mot de passe"
+    />
+    <div
+      class="error"
+      *ngIf="formRegister.submitted && registerForm.get('checkPassword')?.errors?.['required']"
+    >
+      Le mot de passe est requis
+    </div>
+
+    <div
+      class="error"
+      *ngIf="formRegister.submitted && registerForm.errors?.['notEqual']"
+    >
+      Les mots de passe doivent être identiques
+    </div>
+  </div>
+  <div class="checkbox-cgv">
+    <input
+      class="input-form"
+      type="checkbox"
+      formControlName="checkboxCgv"
+      id="checkbox-cgv"
+    />
+    <label for="checkbox-cgv"
+      >J'accepte les conditions générales d'utilisation</label
+    >
+  </div>
+  <div
+    class="error"
+    *ngIf="
+   formRegister.submitted && registerForm.get('checkboxCgv')?.errors?.['required']
+    "
+  >
+    Vous devez accepter les conditions générales d'utilisation.
+  </div>
+
+  <div class="btn-connexion">
+    <app-button variant="pink" text="S'inscrire" type="submit"></app-button>
+  </div>
+</form>

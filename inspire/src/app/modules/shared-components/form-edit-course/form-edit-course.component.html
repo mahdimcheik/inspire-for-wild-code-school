@@ -1,0 +1,73 @@
+<form class="form-course" (ngSubmit)="onSubmit()" [formGroup]="courseForm">
+  <h1>Editer une Formation</h1>
+  <div class="infos">
+    <div class="container-input">
+      <label for="title">Titre de la formation</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        formControlName="title"
+        placeholder="Titre de la formation"
+      />
+    </div>
+    <div class="container-input">
+      <label for="company">Nom de l'établissement *</label>
+      <input
+        type="text"
+        id="company"
+        name="company"
+        formControlName="company"
+        placeholder="Nom de l'entreprise"
+      />
+    </div>
+  </div>
+
+  <div class="container-input">
+    <label for="city">Ville *</label>
+    <input
+      type="text"
+      id="city"
+      name="city"
+      formControlName="city"
+      placeholder="Ville"
+    />
+  </div>
+  <div class="container-input">
+    <label for="country">Pays *</label>
+    <input
+      type="text"
+      id="country"
+      name="country"
+      formControlName="country"
+      placeholder="Pays"
+    />
+  </div>
+
+  <div class="container-input">
+    <label for="dateBegin">Date de début *</label>
+    <input
+      type="date"
+      id="dateBegin"
+      name="dateBegin"
+      formControlName="dateBegin"
+      placeholder="Date de début"
+    />
+  </div>
+
+  <div class="container-input">
+    <label for="dateEnd">Date de fin *</label>
+    <input
+      type="date"
+      id="dateEnd"
+      name="dateEnd"
+      formControlName="dateEnd"
+      placeholder="Date de fin"
+    />
+  </div>
+
+  <div class="btn-connexion">
+    <app-button variant="black" text="Annuler" (click)="cancel()"></app-button>
+    <app-button variant="pink" text="Enregistrer" type="submit"></app-button>
+  </div>
+</form>
